@@ -1,16 +1,26 @@
 		@import url(http://fonts.googleapis.com/css?family=Cinzel);
+		@import url(http://fonts.googleapis.com/css?family=Marck+Script&subset=latin,latin-ext);
 			
 			body{
-				background-color: gainsboro;
+				
+				background-image: url('pozadina.jpg');
+
+                
 			}
 			
 			#frame{
-				width: 1200px;
+				width: 1024px;
 				margin-left: auto;
 				margin-right: auto;
-				background-color: white;
+				
 				position: relative;
-				top: -20px;
+				top: 20px;
+				border-style: solid;
+				border-color: lightgray;
+				border-width: 2px;
+				margin-bottom: 40px;
+				background-color: rgba(255,255,255,0.7);
+
 			}
 			
 			h1{				
@@ -26,7 +36,7 @@
 			#palace{
 				height: 70px;
 				width: 74px;
-				background-image: url('palace.jpg');
+				background-image: url('palace.gif');
 				background-size: contain;
 				background-repeat: no-repeat;
 				position: relative;
@@ -36,20 +46,20 @@
 			
 			#header{
 				padding: 20px;
-				border-top-style: solid;
-				position: relative;
-				top: 40px;
-				border-color: darkgrey;
-				border-width: 1px;
+				width: 0px;				
+			}
+
+			#header a{
+				text-decoration: none;
 			}
 			
 			#nav{
 				
 				position: relative;
-				top: -100px;
+				top: -140px;
 				width: 680px;	
 				position: relative;
-				left: 500px;
+				left: 480px;
 				
 				
 			}
@@ -61,56 +71,140 @@
 			
 			#nav li{
 				display: inline;				
-				margin-left:40px;
+				margin-left:30px;
 				
 			}
 			
 			#nav li a{
 				text-decoration: none;
-				color: grey;
+				color: gray;
 			}
 			
 			#slike{
-				width: 1200px;
-				height: 679px;
+				width: 1024px;
+				height: 579px;
 				background-image: url("slika.jpg"); 
 				background-repeat: no-repeat;
 				position: relative;
-				top: -105px;
+				top: -145px;
 			}
 			
 			#prijava{
 				position: relative;
 				bottom: 276px;
-				left:1110px;
+				left:978px;
 			}
 			
 			#prijava a{
 				text-decoration: none;	
-				color: grey;
+				color: gray;
 			}
 			
 			#footer{
-				color: grey;
+				color: gray;
 				text-align: center;
 
 			}
 
-			#slikaRestorana{
- 				height: 646px;
- 				width: 1200px;
+			
+			#kuhar{
+ 				height: 576px;
+ 				width: 1024px;
  				position: relative;
- 				top: -105px;
+ 				top: -145px;
 
 			}
 
 			#onama{
-				font-size: 20px;
-				margin-left: 20px;	
+				font-size: 18px;
+				margin-left: 10px;	
 				position: relative;
-				bottom: 70px;
+				bottom: 120px;
+				width: 720px;
+				text-align: justify;
 
 			}
+            
+			#partneri{
+				float: right;
+				position: relative;
+				top: -100px;
+				right: 10px;
+				border-color: gainsboro;
+				border-left-style: solid;
+				border-top-style: solid;
+				border-bottom-style: solid;
+				border-top-right-radius: 20px;
+				border-bottom-right-radius: 20px;
+				border-right-style: solid; 
+
+			}
+
+			#partneri ul{
+				list-style-image: url('arrow.png');
+
+			}
+
+			#partneri li{
+				padding: 3px;
+				font-size: 19px;
+
+			}
+
+			#partneri a{
+				text-decoration: none;
+				color: grey;
+			}
+
+			#partneri p{
+				padding-left: 18px;
+				font-size: 18px;
+			}
+
+			#slikaRestorana{
+				height: 551px;
+				width: 1024px;
+				position: relative;
+				top: -145px;
+			}
+
+			#informacije{
+				font-size: 19px;
+				position: relative;
+				bottom: 120px;
+				padding: 10px;
+				color: gray;
+
+			}
+
+			.informacijep{
+				padding-top: 5px;
+				position: relative;
+				left: 15px;
+			}
+
+			#telefon{
+				height: 35px;
+				
+				float: left;
+			}
+
+			#mail{
+				padding-top: 5px;
+				height: 25px;
+				float:	left;
+			}
+
+			
+
+			#location{
+				height: 35px;
+				float: left;
+				margin-left: -10px;
+				margin-right: -9px;
+			}
+
+			
 
 
 

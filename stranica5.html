@@ -17,9 +17,9 @@
 			<div id="nav">
 				<ul>
 				    <li><a href="stranica2.html">O NAMA</a></li>
-					<li><a href="stranica3.html">NAŠI SPECIJALITETI</a></li>
+					<li><a href="stranica3.html">MENI</a></li>
 					<li><a href="stranica4.html">REZERVACIJE</a></li>
-					<li><a href="stranica5.html">LOKACIJA</a></li>
+					<li><a href="stranica5.html">KONTAKT</a></li>
 				</ul>
 			</div>
 			
@@ -37,18 +37,40 @@
 				<img id=mail src="mail.jpg">
 				<p class="informacijep">palace@etf.unsa.ba</p>
 				<img id=location src="lokacija.png">
-				<p class="informacijep">Put života bb</p>
+				<p class="informacijep">Restoran Palace, Put života bb, 71000 Sarajevo</p>
 			</div>
 
-		<!--	<div id="forma">
+			<div id="forma">
 				<p>Kontakt forma:</p>
 				<form>
-					Ime i prezime:<br>
-					<input type="text" name="ime"><br>
-
+					ime i prezime*:<br>
+					<input type="text" name="ime" required><br>
+					e-mail:<br>
+					<input type="email"><br>
+					razlog obraćanja:<br>
+					<input list="naslov">
+						<datalist id="naslov">
+							<option value="Ulažem prigovor">
+							<option value="Tražim informaciju">	
+							<option value="Sugestije i prijedlozi">	
+						</datalist>	<br>
+					poruka*:<br>
+					<textarea name="poruka" rows="10" cols="30" required></textarea><br><br>
+					<div id="posalji"><input type="submit" value="Pošalji"></div>
 				</form>
 			</div>
--->
+
+
+			<div id="rvrijeme">
+				<p id="rvrijemep">Očekujemo Vas sedam dana u nedelji:</p>
+				<p>Ponedjeljak-Subota</p>
+				<p>08:00 - 22:00</p>
+				<p>Nedjelja</p>
+				<p>08:00 - 19:00</p>
+			</div>
+
+			
+
 			<div id="footer">
 				<p>Copyright © 2015 Restoran Palace Sarajevo<br>
 				Sva prava zadržana</p>

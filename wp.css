@@ -4,7 +4,7 @@
 			body{
 				
 				background-image: url('pozadina.jpg');
-
+				background-size: auto;
                 
 			}
 			
@@ -58,9 +58,9 @@
 				
 				position: relative;
 				top: -140px;
-				width: 680px;	
+				width: 440px;	
 				position: relative;
-				left: 462px;
+				left: 574px;
 				
 				
 			}
@@ -175,7 +175,8 @@
 				position: relative;
 				bottom: 120px;
 				padding: 10px;
-				
+				left: 15px;
+				width: 300px;
 
 			}
 
@@ -219,10 +220,89 @@
 				background-repeat: no-repeat;
 			}
 
+			#forma{
+				font-size: 19px;
+				padding: 10px;
+				position: relative;
+				left: 730px;
+				bottom: 363px;
+				margin-bottom: -160px;
+				line-height: 30px;
+				width: 260px
+			}
 
+			#posalji{
+				position: relative;
+				bottom: 20px;
+				left: 176px;
+				width: 100px;
+			}
 
+			#rvrijeme{
+				font-size: 19px;
+				position: relative;
+				left: 400px;
+				bottom: 712px;
+				margin-bottom: -320px;
+				width: 250px;
+				color: gray
+
+			}
+
+			#rvrijemep{
+				color: black;
+			}
+
+			#tabela{
+				margin-top: -100px;
+			}
+
+			table{
+				
+				font-family: cinzel;
+			}
+
+			table, th, td {
+    			border: 2px solid lightgray;
+    			border-collapse: collapse;
+    			font-size: 23px;
+    			text-align: center;
+    			border-right: 0px;
+    			border-left: 0px;
+    			
+			}
+
+			table td{
+				width: 341px;
+				padding: 5px;
+			}
 			
+			.meni{
+				text-align: center;
+				font-size: 32px;
+				
+				color: gray;
+				font-family: cinzel;
 
+
+			}
+			
+			.menid{
+				font-size: 15px;
+				color: gray;
+				font-family: times new roman;
+			}
+
+			.cijena{
+				color: LightSlateGray;
+			}
+
+			#cijenek{
+				text-align: center;
+				color: gray;
+				margin-bottom: 70px;
+				
+			}
 
 
 			

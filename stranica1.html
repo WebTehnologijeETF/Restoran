@@ -10,16 +10,16 @@
 	<body>
 		<div id="frame">
 			<div id="header">
-				<a href="stranica1.html"><div id="palace"></div></a>
-				<a href="stranica1.html"><h1>Palace</h1></a>
+				<a onclick="ucitajStranicu('stranica1.html')"><div id="palace"></div></a>
+				<a onclick="ucitajStranicu('stranica1.html')"><h1>Palace</h1></a>
 			</div>
 			
 			<div id="nav">
 				<ul>
-				    <li><a href="stranica2.html">O NAMA</a></li>
-					<li><a href="stranica3.html">MENI</a></li>
-					<li><a href="stranica4.html">REZERVACIJE</a></li>
-					<li><a href="stranica5.html">KONTAKT</a></li>
+				    <li><a onclick="ucitajStranicu('stranica2.html')">O NAMA</a></li>
+					<li><a onclick="ucitajStranicu('stranica3.html')">MENI</a></li> 
+					<li><a onclick="ucitajStranicu('stranica4.html')">REZERVACIJE</a></li>
+					<li><a onclick="ucitajStranicu('stranica5.html')">KONTAKT</a></li>
 				</ul>
 			</div>
 			
@@ -63,6 +63,8 @@
 					Sva prava zadržana</p>
 				</div>
 			
-		</div>		
+		</div>
+
+		<script src="UcitavanjeStranica.js"></script>		
 	</body>
 </html>

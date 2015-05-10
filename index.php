@@ -40,6 +40,15 @@
 			
 			<div class="novosti">
 				<?php
+					//provjera da li je link slika
+					function isImage($url){
+						$imgExts = array("gif", "jpg", "jpeg", "png", "tiff", "tif");
+						$urlExt= pathinfo($url, PATHINFO_EXTENSION);
+						if(in_array($urlExt, $imgExts))
+						return true;
+						return false;				
+					}
+
 					$tekstovi = array();
 					foreach (new DirectoryIterator('novosti') as $file) {
 						if($file->isDot()) continue;
@@ -77,12 +86,22 @@
 								echo "<div id='novostiNaslov'>$str</div>";
 								continue;
 							}
+							//provjera da li se radi o slici
+							if($j==3){
+								$urlImg=trim($tekstovi[$i][$j]);
+								if(isImage($urlImg)){
+									echo "<img src='$urlImg'><br>";
+									continue;
+							    }
+							}
 							echo $tekstovi[$i][$j]."<br>";
 						}
 						echo "<br><br><br><br><br>";
 					}
 				?>
 			</div>
+
+			<img src="">
 
 			<br><br><br>	
 				<div id="footer">

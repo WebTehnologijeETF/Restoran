@@ -308,7 +308,7 @@
 				padding: 10px;
 				font-size: 18px;
 				border-top: 2px solid lightgray; 
-				width: 590px
+				
 				
 			}
 
@@ -320,10 +320,7 @@
 				color: gray;
 			}
 
-			.naslov{
-				font-size: 25px;
-			}
-
+			
 			.datum{
 				margin-top: -30px;
 			}
@@ -400,5 +397,8 @@
 			}
 
 			
-
+			#novostiNaslov{
+				font-size: 24px;
+				text-decoration: underline;
+			}
 			

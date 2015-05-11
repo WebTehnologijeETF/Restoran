@@ -19,7 +19,7 @@
 				    <li><a href="" onclick="ucitajStranicu('stranica2.html')">O NAMA</a></li>
 					<li><a href="" onclick="ucitajStranicu('stranica3.html')">MENI</a></li> 
 					<li><a href="" onclick="ucitajStranicu('stranica4.html')">REZERVACIJE</a></li>
-					<li><a href="" onclick="ucitajStranicu('stranica5.html')">KONTAKT</a></li>
+					<li><a href="" onclick="ucitajStranicu('stranica5.php')">KONTAKT</a></li>
 				</ul>
 			</div>
 			

@@ -1,4 +1,7 @@
-﻿<!DOCTYPE html>
+﻿<?php
+session_start();
+?>
+<!DOCTYPE html>
 <html>
 	<head>
 		<link rel="shortcut icon" href="icon.ico"/>
@@ -76,6 +79,7 @@
 					
 					//ispisivanje tekstova
 					for ($i=0; $i < count($tekstovi) ; $i++) { 
+						$det=false;
 						//postavljanje samo prvog slova stringa toUpper
 						$tekstovi[$i][2]=strtolower($tekstovi[$i][2]);
 						$tekstovi[$i][2]=ucfirst($tekstovi[$i][2]);
@@ -94,10 +98,21 @@
 									continue;
 							    }
 							}
+							if(trim($tekstovi[$i][$j])=="--"){
+								$det=true;
+								break;
+							}
 							echo $tekstovi[$i][$j]."<br>";
+						}
+						if($det){
+						$_SESSION["id"]=$i;
+						echo '<a href="" onclick="ucitajStranicu(\'strNovosti.php\')">Detaljnije</a>';
+					//	echo "<a href='strNovosti.php?id=$i'>Detaljnije</a>";
 						}
 						echo "<br><br><br><br><br>";
 					}
+					//globalna varijabla kojoj mogu pristupati u drugoj skripti
+					$_SESSION["tekstoviPom"]=$tekstovi;
 				?>
 			</div>
 

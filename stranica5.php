@@ -10,20 +10,20 @@
 	<body>
 		<div id="frame">
 			<div id="header">
-				<a href="" onclick="ucitajStranicu('index.php')"><div id="palace"></div></a>
-				<a href="" onclick="ucitajStranicu('index.php')"><h1>Palace</h1></a>
+				<a href="javascript:;" onclick="ucitajStranicu('index.php')"><div id="palace"></div></a>
+				<a href="javascript:;" onclick="ucitajStranicu('index.php')"><h1>Palace</h1></a>
 			</div>
 			
 			<div id="nav">
 				<ul>
-				    <li><a href="" onclick="ucitajStranicu('stranica2.html')">O NAMA</a></li>
-					<li><a href="" onclick="ucitajStranicu('stranica3.html')">MENI</a></li> 
-					<li><a href="" onclick="ucitajStranicu('stranica4.html')">REZERVACIJE</a></li>
-					<li><a href="" onclick="ucitajStranicu('stranica5.php')">KONTAKT</a></li>
+				    <li><a href="javascript:;" onclick="ucitajStranicu('stranica2.html')">O NAMA</a></li>
+					<li><a href="javascript:;" onclick="ucitajStranicu('stranica3.html')">MENI</a></li> 
+					<li><a href="javascript:;" onclick="ucitajStranicu('stranica4.html')">REZERVACIJE</a></li>
+					<li><a href="javascript:;" onclick="ucitajStranicu('stranica5.php')">KONTAKT</a></li>
 				</ul>
 			</div>
 			
-			<a href="#"><div id="prijava"></div></a>
+			<a href="javascript:;"><div id="prijava"></div></a>
 
 			<a href="https://www.facebook.com/pages/Palace/355407241330586"><div id="fb"></div></a>
 
@@ -44,6 +44,7 @@
 			<?php
 				$ime=$email=$naslov=$komentar="";
 				$imeErr=$emailErr=$komentarErr="";
+				$imeUzv=$mailUzv=$komentarUzv=0;
 
 				function test_input($data){
 					$data=trim($data);
@@ -53,18 +54,28 @@
 				}
 
 				if($_SERVER["REQUEST_METHOD"]=="POST"){
-					if(empty($_POST["ime"])) $imeErr="Greška!";
+					if(empty($_POST["ime"])) {
+						$imeErr="Greška!";
+						$imeUzv=1;
+					}
 					else {
 						$ime=test_input($_POST["ime"]);
-						if(!preg_match("/^[a-zA-ZčćžšđČĆŽŠĐ]+[ ][a-zA-ZčćžšđČĆŽŠĐ]+$/", $ime))
+						if(!preg_match("/^[a-zA-ZčćžšđČĆŽŠĐ]+[ ][a-zA-ZčćžšđČĆŽŠĐ]+$/", $ime)){
 							$imeErr="Greška!";
+							$imeUzv=1;
+						}
 					}
 					
 					$email=test_input($_POST["mail"]);
-					if(!preg_match("/^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+$/", $email))
+					if(!empty($email) && !preg_match("/^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+$/", $email)){
 						$emailErr="Pogrešan e-mail!";
+						$mailUzv=1;
+					}					
 					
-					if(empty($_POST["poruka"])) $komentarErr="Napišite poruku!";
+					if(empty($_POST["poruka"])){
+						$komentarErr="Napišite poruku!";
+						$komentarUzv=1;
+					}
 					else $komentar=test_input($_POST["poruka"]);
 					
 					$naslov=test_input($_POST["naslov"]);
@@ -79,7 +90,7 @@
 					<input type="text" name="ime" onchange="provjeriIme()"><br> <!--required-->
 					e-mail:<br>
 					<input type="text" name="mail" onchange="provjeriMail()"><br>
-					razlog obraćanja:<br>
+					razlog obraćanja:<br> 
 					<input list="naslov" name="naslov">
 						<datalist id="naslov">
 							<option value="Ulažem prigovor">
@@ -101,9 +112,9 @@
 				<p>08:00 - 19:00</p>
 			</div>
 
-			<div id="uzv1"></div>
-			<div id="uzv2"></div>
-			<div id="uzv3"></div>
+			<div id="uzv1" style="opacity:<?php echo $imeUzv;?>"></div>
+			<div id="uzv2" style="opacity:<?php echo $mailUzv;?>"></div>
+			<div id="uzv3" style="opacity:<?php echo $komentarUzv;?>"></div>
 
 			<div id="alert">
 				<div id="alert1"><?php echo $imeErr;?></div>

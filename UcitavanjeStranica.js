@@ -7,7 +7,7 @@ function ucitajStranicu(stranica){
 						document.close();
 					}
 				}	
-				x.open("POST", stranica, true);
+				x.open("GET", stranica, true);
 				x.send();
 return false;
                                 				

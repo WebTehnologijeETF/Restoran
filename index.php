@@ -13,20 +13,20 @@ session_start();
 	<body>
 		<div id="frame">
 			<div id="header">
-				<a href="" onclick="ucitajStranicu('index.php')"><div id="palace"></div></a>
-				<a href="" onclick="ucitajStranicu('index.php')"><h1>Palace</h1></a>
+				<a href="javascript:;" onclick="ucitajStranicu('index.php')"><div id="palace"></div></a>
+				<a href="javascript:;" onclick="ucitajStranicu('index.php')"><h1>Palace</h1></a>
 			</div>
 			
 			<div id="nav">
 				<ul>
-				    <li><a href="" onclick="ucitajStranicu('stranica2.html')">O NAMA</a></li>
-					<li><a href="" onclick="ucitajStranicu('stranica3.html')">MENI</a></li> 
-					<li><a href="" onclick="ucitajStranicu('stranica4.html')">REZERVACIJE</a></li>
-					<li><a href="" onclick="ucitajStranicu('stranica5.php')">KONTAKT</a></li>
+				    <li><a href="javascript:;" onclick="ucitajStranicu('stranica2.html')">O NAMA</a></li>
+					<li><a href="javascript:;" onclick="ucitajStranicu('stranica3.html')">MENI</a></li> 
+					<li><a href="javascript:;" onclick="ucitajStranicu('stranica4.html')">REZERVACIJE</a></li>
+					<li><a href="javascript:;" onclick="ucitajStranicu('stranica5.php')">KONTAKT</a></li>
 				</ul>
 			</div>
 			
-			<a href="#"><div id="prijava"></div></a>	
+			<a href="javascript:;"><div id="prijava"></div></a>	
 
 
 			
@@ -104,9 +104,8 @@ session_start();
 							}
 							echo $tekstovi[$i][$j]."<br>";
 						}
-						if($det){
-						$_SESSION["id"]=$i;
-						echo '<a href="" onclick="ucitajStranicu(\'strNovosti.php\')">Detaljnije</a>';
+						if($det){						
+						echo "<a href='javascript:;' onclick='ucitajStranicu(\"strNovosti.php?id=$i\")'>Detaljnije</a>";
 					//	echo "<a href='strNovosti.php?id=$i'>Detaljnije</a>";
 						}
 						echo "<br><br><br><br><br>";

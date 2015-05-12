@@ -13,20 +13,20 @@ session_start();
 	<body>
 		<div id="frame">
 			<div id="header">
-				<a href="" onclick="ucitajStranicu('index.php')"><div id="palace"></div></a>
-				<a href="" onclick="ucitajStranicu('index.php')"><h1>Palace</h1></a>
+				<a href="javascript:;" onclick="ucitajStranicu('index.php')"><div id="palace"></div></a>
+				<a href="javascript:;" onclick="ucitajStranicu('index.php')"><h1>Palace</h1></a>
 			</div>
 			
 			<div id="nav">
 				<ul>
-				    <li><a href="" onclick="ucitajStranicu('stranica2.html')">O NAMA</a></li>
-					<li><a href="" onclick="ucitajStranicu('stranica3.html')">MENI</a></li> 
-					<li><a href="" onclick="ucitajStranicu('stranica4.html')">REZERVACIJE</a></li>
-					<li><a href="" onclick="ucitajStranicu('stranica5.php')">KONTAKT</a></li>
+				    <li><a href="javascript:;" onclick="ucitajStranicu('stranica2.html')">O NAMA</a></li>
+					<li><a href="javascript:;" onclick="ucitajStranicu('stranica3.html')">MENI</a></li> 
+					<li><a href="javascript:;" onclick="ucitajStranicu('stranica4.html')">REZERVACIJE</a></li>
+					<li><a href="javascript:;" onclick="ucitajStranicu('stranica5.php')">KONTAKT</a></li>
 				</ul>
 			</div>
 			
-			<a href="#"><div id="prijava"></div></a>
+			<a href="javascript:;"><div id="prijava"></div></a>
 
 			<a href="https://www.facebook.com/pages/Palace/355407241330586"><div id="fb"></div></a>
 
@@ -40,7 +40,7 @@ session_start();
 						return false;				
 					}
 
-					$index=$_SESSION["id"];
+					$index=$_GET["id"];
 					$tekstovi=$_SESSION["tekstoviPom"];
 					//ispisivanje tekstova
 					//postavljanje samo prvog slova stringa toUpper

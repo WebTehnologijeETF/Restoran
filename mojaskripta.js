@@ -1,8 +1,29 @@
 ﻿var boolIme=false;
 var boolPoruka=false;
+var boolMail=false;
+
+function resetuj(){
+	document.forms["mojaForma"]["ime"].value="";
+	document.forms["mojaForma"]["mail"].value="";
+	document.forms["mojaForma"]["naslov"].value="";
+	document.forms["mojaForma"]["poruka"].value="";
+	document.forms["mojaForma"]["ime"].style.background="#FFFFFF";
+	document.forms["mojaForma"]["mail"].style.background="#FFFFFF";
+	document.forms["mojaForma"]["poruka"].style.background="#FFFFFF";
+	document.getElementById('uzv1').style.opacity=0;
+	document.getElementById('uzv2').style.opacity=0;
+	document.getElementById('uzv3').style.opacity=0;
+	document.getElementById('alert1').innerHTML="";
+	document.getElementById('alert2').innerHTML="";
+	document.getElementById('alert3').innerHTML="";
+	boolIme=false;
+	boolPoruka=false;
+}
 
 function validateForm(){
 	var b=document.forms["mojaForma"]["dugme"];
+	var naslovValue=document.forms["mojaForma"]["naslov"].value;
+//	if(naslovValue=="Tražim informaciju" && !boolMail) return false;
 	if(boolIme && boolPoruka) return true;
 	else return false;
 	}
@@ -36,20 +57,28 @@ function provjeriMail(){
 		x.style.background="#FFE6E6";
 		document.getElementById('uzv2').style.opacity=1.0;
 		alertMail.innerHTML="Pogrešan e-mail!";
+		boolMail=false;
 		
 	}
 	else{
 		x.style.background="#EAFEEA";
 		document.getElementById('uzv2').style.opacity=0;
 		alertMail.innerHTML="";
-		
+		boolMail=true;
 	}
+}
+
+function blankoZnakovi(string){
+	for (var i = 0; i < string.length; i++) {
+		if(string[i]!=' ') return true;
+		return false;
+	};
 }
 
 function provjeriPoruku(){
 	var x=document.forms["mojaForma"]["poruka"];
 	var alertPoruka=document.getElementById("alert3");
-	if(x.value=="" || x.value==null){
+	if(x.value=="" || !blankoZnakovi(x.value)){
 		x.style.background="#FFE6E6";
 		document.getElementById('uzv3').style.opacity=1.0;
 		boolPoruka=false;

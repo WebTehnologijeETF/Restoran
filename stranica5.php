@@ -39,67 +39,33 @@
 				<img id=location src="lokacija.png">
 				<p class="informacijep">Restoran Palace, Put života bb, 71000 Sarajevo</p>
 			</div>
-
+              
 			
-			<?php
-				$ime=$email=$naslov=$komentar="";
-				$imeErr=$emailErr=$komentarErr="";
-				$imeUzv=$mailUzv=$komentarUzv=0;
-
-				function test_input($data){
-					$data=trim($data);
-					$data=stripcslashes($data);
-					$data=htmlspecialchars($data);
-					return $data;
-				}
-
-				if($_SERVER["REQUEST_METHOD"]=="POST"){
-					if(empty($_POST["ime"])) {
-						$imeErr="Greška!";
-						$imeUzv=1;
-					}
-					else {
-						$ime=test_input($_POST["ime"]);
-						if(!preg_match("/^[a-zA-ZčćžšđČĆŽŠĐ]+[ ][a-zA-ZčćžšđČĆŽŠĐ]+$/", $ime)){
-							$imeErr="Greška!";
-							$imeUzv=1;
-						}
-					}
-					
-					$email=test_input($_POST["mail"]);
-					if(!empty($email) && !preg_match("/^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+$/", $email)){
-						$emailErr="Pogrešan e-mail!";
-						$mailUzv=1;
-					}					
-					
-					if(empty($_POST["poruka"])){
-						$komentarErr="Napišite poruku!";
-						$komentarUzv=1;
-					}
-					else $komentar=test_input($_POST["poruka"]);
-					
-					$naslov=test_input($_POST["naslov"]);
-				}
-		    ?>
+			
+			<?php include 'phpFormV.php';?>
 
 			<div id="forma">
-				<p>Kontakt forma:</p>
+				<p>Kontakt forma:</p>   
 				<form name="mojaForma" method="post" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>"
-				onsubmit="return validateForm()" novalidate>
+				onsubmit="return validateForm()" novalidate >
 					ime i prezime*:<br>
-					<input type="text" name="ime" onchange="provjeriIme()"><br> <!--required-->
+					<input type="text" name="ime" value="<?php if(!$prolaziVal) echo $ime;?>" onchange="provjeriIme()"
+					style="background-color:<?php if(!$prolaziVal) echo $imeCol;?>"><br> 
 					e-mail:<br>
-					<input type="text" name="mail" onchange="provjeriMail()"><br>
+					<input type="text" name="mail" value="<?php if(!$prolaziVal) echo $email;?>" onchange="provjeriMail()"
+					style="background-color:<?php if(!$prolaziVal) echo $mailCol;?>"><br>
 					razlog obraćanja:<br> 
-					<input list="naslov" name="naslov">
+					<input list="naslov" name="naslov" value="<?php if(!$prolaziVal) echo $naslov;?>">
 						<datalist id="naslov">
 							<option value="Ulažem prigovor">
 							<option value="Tražim informaciju">	
 							<option value="Sugestije i prijedlozi">	
 						</datalist>	<br>
 					poruka*:<br>
-					<textarea name="poruka" rows="14" cols="22" required onchange="provjeriPoruku()"></textarea><br><br>
+					<textarea name="poruka" rows="14" cols="22" required onchange="provjeriPoruku()" 
+					style="background-color:<?php if(!$prolaziVal) echo $imeCol;?>"><?php if(!$prolaziVal) echo $komentar;?></textarea><br><br>
 					<div id="posalji"><input type="submit" name="dugme" value="Pošalji"></div>
+					<div id="reset"><input type="button" value="reset" onclick="resetuj()"></div>
 				</form>
 			</div>
 
@@ -134,75 +100,8 @@
 
 		
 
-<!--		<script>
-			var boolIme=false;
-			var boolPoruka=false;
 
-			function validateForm(){
-				var b=document.forms["mojaForma"]["dugme"];
-				if(boolIme && boolPoruka) return true;
-				else return false;
-				}
-
-			
-			function provjeriIme(){
-				var x=document.forms["mojaForma"]["ime"];
-				var imeRegEx=/^[a-zA-ZčćžšđČĆŽŠĐ]+[ ][a-zA-ZčćžšđČĆŽŠĐ]+$/;
-				var alertIme=document.getElementById("alert1");
-				if(!imeRegEx.test(x.value)){
-					x.style.background="#FFE6E6";
-				 	document.getElementById('uzv1').style.opacity=1.0;
-				 	boolIme=false;
-				 	alertIme.innerHTML="Greška!";
-				 	validateForm();
-				}
-				else{
-					x.style.background="#EAFEEA";
-					document.getElementById('uzv1').style.opacity=0;
-					boolIme=true;
-					alertIme.innerHTML="";
-					validateForm();
-				}									
-			}
-
-			function provjeriMail(){
-				var x=document.forms["mojaForma"]["mail"];
-				var mejlRegEx=/^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+$/;
-				var alertMail=document.getElementById("alert2");
-				if(!mejlRegEx.test(x.value)){
-					x.style.background="#FFE6E6";
-					document.getElementById('uzv2').style.opacity=1.0;
-					alertMail.innerHTML="Pogrešan e-mail!";
-					
-				}
-				else{
-					x.style.background="#EAFEEA";
-					document.getElementById('uzv2').style.opacity=0;
-					alertMail.innerHTML="";
-					
-				}
-			}
-
-			function provjeriPoruku(){
-				var x=document.forms["mojaForma"]["poruka"];
-				var alertPoruka=document.getElementById("alert3");
-				if(x.value=="" || x.value==null){
-					x.style.background="#FFE6E6";
-					document.getElementById('uzv3').style.opacity=1.0;
-					boolPoruka=false;
-					alertPoruka.innerHTML="Napišite poruku!";
-					validateForm();
-				}
-				else{
-					x.style.background="#EAFEEA";
-					document.getElementById('uzv3').style.opacity=0;
-					boolPoruka=true;
-					alertPoruka.innerHTML="";
-					validateForm();
-				} 
-			} 
-		</script>  -->
-	<!--	<script src="mojaskripta.js"></script> -->
+	    <script src="mojaskripta.js"></script>
 		<script src="UcitavanjeStranica.js"></script>		
 	</body>
 </html>

@@ -402,3 +402,7 @@
 				text-decoration: underline;
 			}
 			
+			#reset{
+				position:absolute;
+				bottom: 30px;
+			}

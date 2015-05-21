@@ -1,13 +1,13 @@
-﻿<?php
-session_start();
-?>
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html>
 	<head>
 		<link rel="shortcut icon" href="icon.ico"/>
 		<title>Restoran Palace</title>
 		<meta charset="UTF-8">
+		<script src="jquery-1.11.3.min.js"></script>
+		<script src="jquery.cycle.all.js"></script>
 		<link rel="stylesheet" type="text/css" href="wp.css"> 
+		<script src="imagesch.js"></script>
 	</head>
 	
 	<body>
@@ -20,8 +20,8 @@ session_start();
 			<div id="nav">
 				<ul>
 				    <li><a href="javascript:;" onclick="ucitajStranicu('stranica2.html')">O NAMA</a></li>
-					<li><a href="javascript:;" onclick="ucitajStranicu('stranica3.html')">MENI</a></li> 
-					<li><a href="javascript:;" onclick="ucitajStranicu('stranica4.html')">REZERVACIJE</a></li>
+					<li><a href="javascript:;" onclick="ucitajStranicu('stranica4.php')">NOVOSTI</a></li>
+					<li><a href="javascript:;" onclick="ucitajStranicu('stranica3.html')">MENI</a></li>					 
 					<li><a href="javascript:;" onclick="ucitajStranicu('stranica5.php')">KONTAKT</a></li>
 				</ul>
 			</div>
@@ -34,90 +34,17 @@ session_start();
 			
 			
 
-			<div id="slike"></div>		
+			<ul id="slider1" style="list-style-type:none">
+				<li><img border="0" src="slika1.jpg"></li>
+				<li><img border="0" src="slika2.jpg"></li>
+				<li><img border="0" src="slika3.jpg"></li>
+				<li><img border="0" src="slika4.jpg"></li>
+			</ul>
 
 
-			<p id="nov">Novosti:</p>
 
-			
-			
-			<div class="novosti">
-				<?php
-					//provjera da li je link slika
-					function isImage($url){
-						$imgExts = array("gif", "jpg", "jpeg", "png", "tiff", "tif");
-						$urlExt= pathinfo($url, PATHINFO_EXTENSION);
-						if(in_array($urlExt, $imgExts))
-						return true;
-						return false;				
-					}
 
-					$tekstovi = array();
-					foreach (new DirectoryIterator('novosti') as $file) {
-						if($file->isDot()) continue;
-						$myfile=fopen("novosti\\".$file->getFilename(),"r") or die ("Unable to open!");
-					//	echo fread($myfile, filesize("novosti\\".$file->getFilename()));
-						$nizLinija= array();
-						while(!feof($myfile))
-							$nizLinija[]=fgets($myfile);
-						fclose($myfile);
-						$tekstovi[]=$nizLinija;
-					}
-					
-					//sortiranje tekstova
-					for ($i=0; $i < count($tekstovi); $i++) { 
-						for ($j=$i+1; $j < count($tekstovi); $j++) { 
-							if(strtotime($tekstovi[$i][0])<strtotime($tekstovi[$j][0])){
-								//$pom= array();
-								$pom=$tekstovi[$i];
-								$tekstovi[$i]=$tekstovi[$j];
-								$tekstovi[$j]=$pom;
-							}
-														
-						}
-					}
-					
-					//ispisivanje tekstova
-					for ($i=0; $i < count($tekstovi) ; $i++) { 
-						$det=false;
-						//postavljanje samo prvog slova stringa toUpper
-						$tekstovi[$i][2]=strtolower($tekstovi[$i][2]);
-						$tekstovi[$i][2]=ucfirst($tekstovi[$i][2]);
-						for ($j=0; $j < count($tekstovi[$i]); $j++) { 
-							//ispisivanje naslova
-							if($j==2){
-								$str=$tekstovi[$i][$j];
-								echo "<div id='novostiNaslov'>$str</div>";
-								continue;
-							}
-							//provjera da li se radi o slici
-							if($j==3){
-								$urlImg=trim($tekstovi[$i][$j]);
-								if(isImage($urlImg)){
-									echo "<img src='$urlImg'><br>";
-									continue;
-							    }
-							}
-							if(trim($tekstovi[$i][$j])=="--"){
-								$det=true;
-								break;
-							}
-							echo $tekstovi[$i][$j]."<br>";
-						}
-						if($det){						
-						echo "<a href='javascript:;' onclick='ucitajStranicu(\"strNovosti.php?id=$i\")'>Detaljnije</a>";
-					//	echo "<a href='strNovosti.php?id=$i'>Detaljnije</a>";
-						}
-						echo "<br><br><br><br><br>";
-					}
-					//globalna varijabla kojoj mogu pristupati u drugoj skripti
-					$_SESSION["tekstoviPom"]=$tekstovi;
-				?>
-			</div>
 
-			<img src="">
-
-			<br><br><br>	
 				<div id="footer">
 					<p>Copyright © 2015 Restoran Palace Sarajevo<br>
 					Sva prava zadržana</p>

@@ -9,6 +9,6 @@ function ucitajStranicu(stranica){
 				}	
 				x.open("GET", stranica, true);
 				x.send();
-return false;
+false;
                                 				
 			}

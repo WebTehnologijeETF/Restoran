@@ -17,8 +17,8 @@
 			<div id="nav">
 				<ul>
 				    <li><a href="javascript:;" onclick="ucitajStranicu('stranica2.html')">O NAMA</a></li>
-					<li><a href="javascript:;" onclick="ucitajStranicu('stranica3.html')">MENI</a></li> 
-					<li><a href="javascript:;" onclick="ucitajStranicu('stranica4.html')">REZERVACIJE</a></li>
+					<li><a href="javascript:;" onclick="ucitajStranicu('stranica4.php')">NOVOSTI</a></li>
+					<li><a href="javascript:;" onclick="ucitajStranicu('stranica3.html')">MENI</a></li>					 
 					<li><a href="javascript:;" onclick="ucitajStranicu('stranica5.php')">KONTAKT</a></li>
 				</ul>
 			</div>

@@ -1,20 +1,17 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html>
 	<head>
 		<link rel="shortcut icon" href="icon.ico"/>
 		<title>Restoran Palace</title>
 		<meta charset="UTF-8">
-		<script src="jquery-1.11.3.min.js"></script>
-		<script src="jquery.cycle.all.js"></script>
 		<link rel="stylesheet" type="text/css" href="wp.css"> 
-		<script src="imagesch.js"></script>
 	</head>
 	
 	<body>
 		<div id="frame">
 			<div id="header">
 				<a href="javascript:;" onclick="ucitajStranicu('index.php')"><div id="palace"></div></a>
-				<a href="javascript:;" onclick="ucitajStranicu('index.php')"><h1>Palace</h1></a>
+				<a href="javascript:;" onclick="ucitajStranicu('index.php')"><h1>Palace</h1></a>				
 			</div>
 			
 			<div id="nav">
@@ -26,38 +23,70 @@
 				</ul>
 			</div>
 			
-			<a href="javascript:;" onclick="ucitajStranicu('login.php')"><div id="prijava"></div></a>	
+			<a href="javascript:;" onclick="ucitajStranicu('login.php')"><div id="prijava"></div></a>
 
-
-			
 			<a href="https://www.facebook.com/pages/Palace/355407241330586"><div id="fb"></div></a>
 			
 			
 
-			<ul id="slider1" style="list-style-type:none">
-				<li><img border="0" src="slika1.jpg"></li>
-				<li><img border="0" src="slika2.jpg"></li>
-				<li><img border="0" src="slika3.jpg"></li>
-				<li><img border="0" src="slika4.jpg"></li>
-			</ul>
 
 
-			<div id='welcome'>Dobro dosli!</div>
-
+			<div class="novosti">
 			<?php
-			session_start();
-			if(isset($_SESSION['login_user'])){
-					echo "<div id='loginInf1'>Administrator je prijavljen!</div>";
+
+				$index=$_GET['id'];
+				
+				try{
+									 	
+
+					$veza=new PDO("mysql:host=localhost;dbname=restoran", "korisnik", "korisnik");
+					$veza->exec("set names utf8");
+					$rezultat=$veza->query("select id, autor, naslov, slika, datum, tekst, tekstDet from novosti where id=$index
+					 order by datum desc");
+					
+										
+					foreach ($rezultat as $item) {
+						$item['naslov']=strtolower($item['naslov']);
+						$item['naslov']=ucfirst($item['naslov']);
+						
+							print $item['datum']."<br>".$item['autor']."<br><div id='novostiNaslov'>".$item['naslov'].
+							"</div><br><img src='".$item['slika']."'><br>".$item['tekstDet'];
+							
+						
+					}
+					
 				}
+				catch (Exception $e) {
+				 	echo $e->getMessage();
+				} 
+
+
+
 			?>
+
+			</div>
+
+
+
+
+
+
+
+
+			
 			
 			<div id="footer">
 				<p>Copyright © 2015 Restoran Palace Sarajevo<br>
 				Sva prava zadržana</p>
 			</div>
 			
-		</div>
+		</div>	
 
 		<script src="UcitavanjeStranica.js"></script>		
 	</body>
 </html>
+
+
+
+
+

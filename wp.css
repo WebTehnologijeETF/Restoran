@@ -29,7 +29,7 @@
 				font-size: 46px;
 				position: relative;
 				left: 5px;
-				color: green;
+				color: gray;
 				top: -40px;
 				
 			}
@@ -401,4 +401,134 @@
 			#reset{
 				position:absolute;
 				bottom: 15px;
+			}
+
+			#komentarNaslov{
+				color: teal;
+				font-size: 30px;
+				padding: 20px;
+				margin-bottom: 100px;
+			}
+
+			#napisiKomentar{
+				position: relative;
+				left: 100px;
+			}
+
+			.novosti2{
+				color: teal;
+				text-decoration: none;				
+			}
+
+			#welcome{
+				color: gray;
+				position: relative;
+				text-align: center;
+				bottom: 35px;
+				font-size: 35px;
+				font-family: cinzel;
+
+			} 
+
+			#komentarObavijest{
+				color: red;
+				font-size: 25px;
+				text-align: center;
+			}
+
+			#adminPanel{
+				padding: 10px;
+				position: relative;
+				bottom: 100px;
+			}
+
+			#loginError{
+				color: red;
+			}
+
+			.adminOpcije{
+				font-size: 25px;
+				padding: 5px;
+				color: DimGray;
+				border-bottom: 2px solid lightgray;
+			}
+
+			#odjava{
+				color:teal;
+				font-size: 20px;
+				position: relative;
+				bottom: 130px;
+				left: 800px;
+
+			}
+
+			#adminProstor{
+				font-size:35px;
+				color:teal;
+				padding:5px;
+				position: relative;
+				bottom: 80px;
+				margin-bottom: -100px;
+			}
+
+			#loginInf1{
+				position: absolute;
+				bottom: 850px;
+				left: 712px;
+				color: teal;
+				font-size: 17px;
+			}
+
+			#loginInf2{
+				position: relative;
+				bottom: 1102px;
+				left: 712px;
+				color: teal;
+				font-size: 17px;
+			}
+
+			#loginInf3{
+				position: relative;
+				bottom: 265px;
+				left: 712px;
+				color: teal;
+				font-size: 17px;
+			}
+
+			#loginInf5{
+				position: absolute;
+				bottom: 1525px;
+				left: 712px;
+				color: teal;
+				font-size: 17px;
+			}
+
+			#loginInfKom{
+				position: relative;
+				bottom: 265px;
+				left: 712px;
+				color: teal;
+				font-size: 17px;
+			}
+
+			#brisanjeKomentara1{
+				color: teal;
+				font-size: 30px;
+				padding: 20px;
+				margin-bottom: 100px;
+			}
+
+			#brisanjeKomentara2{
+				color: red;
+				font-size: 30px;
+				padding: 20px;
+				margin-bottom: 100px;
+			}
+
+			#vratiNazad{
+				color: blue;
+				font-size: 20px;
+				padding: 20px;
+				position: relative;
+				bottom: 50px;
 			}

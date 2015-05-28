@@ -16,14 +16,14 @@
 			
 			<div id="nav">
 				<ul>
-				    <li><a href="javascript:;" onclick="ucitajStranicu('stranica2.html')">O NAMA</a></li>
-					<li><a href="javascript:;" onclick="ucitajStranicu('stranica4.php')">NOVOSTI</a></li>
-					<li><a href="javascript:;" onclick="ucitajStranicu('stranica3.html')">MENI</a></li>					 
+				    <li><a href="javascript:;" onclick="ucitajStranicu('stranica2.php')">O NAMA</a></li>
+					<li><a href="javascript:;" onclick="ucitajStranicu('novostiBaza.php')">NOVOSTI</a></li>
+					<li><a href="javascript:;" onclick="ucitajStranicu('stranica3.php')">MENI</a></li>					 
 					<li><a href="javascript:;" onclick="ucitajStranicu('stranica5.php')">KONTAKT</a></li>
 				</ul>
 			</div>
 			
-			<a href="javascript:;"><div id="prijava"></div></a>
+			<a href="javascript:;" onclick="ucitajStranicu('login.php')"><div id="prijava"></div></a>
 
 			<a href="https://www.facebook.com/pages/Palace/355407241330586"><div id="fb"></div></a>
 			
@@ -61,7 +61,12 @@
 
 			</div>
 
-			
+			<?php
+			session_start();
+			if(isset($_SESSION['login_user'])){
+					echo "<div id='loginInf2'>Administrator je prijavljen!</div>";
+				}
+			?>
 			
 			<div id="footer">
 				<p>Copyright © 2015 Restoran Palace Sarajevo<br>
@@ -73,43 +78,6 @@
 		<script src="UcitavanjeStranica.js"></script>		
 	</body>
 </html>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 

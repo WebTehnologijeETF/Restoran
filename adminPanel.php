@@ -1,7 +1,7 @@
 <?php  
 	session_start(); 
-
-	if(!isset($_SESSION['login_user'])){
+	$user=$_SESSION['login_user'];
+	if($user!='admin'){
 		header("location: index.php");
 	}
 

@@ -606,3 +606,11 @@
 				left: 814px;
 			}
 
+			#registracija1{
+				position: absolute;
+				bottom: 922px;
+				left: 814px;
+				font-size: 17px;
+				text-decoration: none;
+				color: gray;
+			}

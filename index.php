@@ -52,7 +52,7 @@
 				}
 			?>
 
-			
+			<a href="javascript:;" onclick="ucitajStranicu('registracija.php')" id="registracija1">Registruj se</a>
 			
 			
 			<div id="footer">

@@ -1,11 +1,7 @@
 <?php 
-	session_start();
-	if(isset($_SESSION['login_user'])){
-		$user=$_SESSION['login_user'];
-		if($user=='admin') header('Location:adminPanel.php'); 
-		header('Location:index.php'); 
-	}
-
+	//session_start();
+	//if(isset($_SESSION['login_user'])){ header('Location:adminPanel.php'); }
+	
 	$error="";
 	if(!empty($_POST)){
 		$loginName=$_POST['ime'];
@@ -25,24 +21,26 @@
 			$veza=new PDO("mysql:host=127.0.0.1;dbname=restoran", "korisnik", "korisnik");
 			$veza->exec("set names utf8");
 
-			$rezultat= $veza->query("select username,password from loginpodaci where username='$loginName'");
+			$rezultat= $veza->query("select username from loginpodaci where username='$loginName'");
 
-			if($rezultat->rowCount()==0) $error="Korisnik ne postoji!";
+			if($rezultat->rowCount()!=0) $error="Korisnicko ime vec postoji!";
+			else{
 
-			foreach ($rezultat as $item) {
-				if($item['password']==$loginPass){
-					$_SESSION['login_user']=$loginName;
-					header("location:adminPanel.php");
-				}
-				else{
-				$error="Password nije ispravan!";
-				}
+				$sql="INSERT INTO loginpodaci(username, password)
+				VALUES('$loginName', '$loginPass')";
+				$veza->exec($sql); 
+				
+
+
+				header("location:login.php");
+					
 			}	
 				
-			} 
-			catch (Exception $e) {
-			 	echo $e->getMessage();
-			}   
+			
+		} 
+		catch (Exception $e) {
+		 	echo $e->getMessage();
+		}   
 	}
 
 ?>
@@ -75,12 +73,12 @@
 
 			<a href="https://www.facebook.com/pages/Palace/355407241330586"><div id="fb"></div></a>
 			
-			<div id='adminPanel'>
-				<p>Admin prijava(admin/admin)</p>
+			<div id=''>
+				
 				<form name='loginForma' method='post'  action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>">
 				<input type='text' name='ime' placeholder='user name' required><br>
 				<input type='password' name='pass' placeholder='password' required><br>
-				<input type='submit' value='Prijavi se'>
+				<input type='submit' value='Registruj se'>
 			    </form>
 			    <br><div id="loginError"><?php echo $error; ?></div>
 			</div>

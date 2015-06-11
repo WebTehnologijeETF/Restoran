@@ -17,7 +17,7 @@
 		$loginPass=htmlspecialchars($loginPass);
 
 		try{				
-			$veza=new PDO("mysql:host=localhost;dbname=restoran", "korisnik", "korisnik");
+			$veza=new PDO("mysql:host=127.0.0.1;dbname=restoran", "korisnik", "korisnik");
 			$veza->exec("set names utf8");
 
 			$rezultat= $veza->query("select username,password from loginpodaci where username='$loginName'");
@@ -47,7 +47,7 @@
 		<link rel="shortcut icon" href="icon.ico"/>
 		<title>Restoran Palace</title>
 		<meta charset="UTF-8">
-		<link rel="stylesheet" type="text/css" href="wp.css"> 
+		<link rel="stylesheet" type="text/css" href="css\wp.css"> 
 	</head>
 	
 	<body>
@@ -91,7 +91,7 @@
 
 			
 
-		<script src="UcitavanjeStranica.js"></script>		
+		<script src="js\UcitavanjeStranica.js"></script>		
 	</body>
 </html>
 

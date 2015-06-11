@@ -4,10 +4,10 @@
 		<link rel="shortcut icon" href="icon.ico"/>
 		<title>Restoran Palace</title>
 		<meta charset="UTF-8">
-		<script src="jquery-1.11.3.min.js"></script>
-		<script src="jquery.cycle.all.js"></script>
-		<link rel="stylesheet" type="text/css" href="wp.css"> 
-		<script src="imagesch.js"></script>
+		<script src="js\jquery-1.11.3.min.js"></script>
+		<script src="js\jquery.cycle.all.js"></script>
+		<link rel="stylesheet" type="text/css" href="css\wp.css"> 
+		<script src="js\imagesch.js"></script>
 	</head>
 	
 	<body>
@@ -47,9 +47,13 @@
 			<?php
 			session_start();
 			if(isset($_SESSION['login_user'])){
-					echo "<div id='loginInf1'>Administrator je prijavljen!</div>";
+					echo "<div id='loginInf1'>".$_SESSION['login_user']." je prijavljen!</div>";
+					echo '<a href="phpSkripte\odjava.php" id="odjava1">Odjavite se!</a>';
 				}
 			?>
+
+			
+			
 			
 			<div id="footer">
 				<p>Copyright © 2015 Restoran Palace Sarajevo<br>
@@ -58,6 +62,6 @@
 			
 		</div>
 
-		<script src="UcitavanjeStranica.js"></script>		
+		<script src="js\UcitavanjeStranica.js"></script>		
 	</body>
 </html>

@@ -12,7 +12,7 @@
 		<link rel="shortcut icon" href="icon.ico"/>
 		<title>Restoran Palace</title>
 		<meta charset="UTF-8">
-		<link rel="stylesheet" type="text/css" href="wp.css"> 
+		<link rel="stylesheet" type="text/css" href="css\wp.css"> 
 	</head>
 	
 	<body>
@@ -24,7 +24,7 @@
 			
 			<p id="adminProstor">Administratorski prostor:<p>
 
-			<a id="odjava" href="odjava.php">Odjavi se</a>	
+			
 				
 			<p class="adminOpcije">Brisanje komentara</p>
 
@@ -45,7 +45,7 @@
 			
 		</div>	
 
-		<script src="UcitavanjeStranica.js"></script>		
+		<script src="js\UcitavanjeStranica.js"></script>		
 	</body>
 </html>
 

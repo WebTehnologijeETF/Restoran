@@ -1,13 +1,13 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html>
 	<head>
 		<link rel="shortcut icon" href="icon.ico"/>
 		<title>Restoran Palace</title>
 		<meta charset="UTF-8">
-		<link rel="stylesheet" type="text/css" href="wp.css"> 
+		<link rel="stylesheet" type="text/css" href="css\wp.css"> 
 	</head>
 	
-	<body>
+	<body onload="prikaziGlavneNovosti()">
 		<div id="frame">
 			<div id="header">
 				<a href="javascript:;" onclick="ucitajStranicu('index.php')"><div id="palace"></div></a>
@@ -31,7 +31,8 @@
 			<?php
 			session_start();
 			if(isset($_SESSION['login_user'])){
-					echo "<div id='loginInf3'>Administrator je prijavljen!</div>";
+					echo "<div id='loginInfNovosti'>".$_SESSION['login_user']." je prijavljen!</div>";
+					echo '<a href="phpSkripte\odjava.php" id="odjavaNovosti">Odjavite se!</a>';
 				}
 			?>
 
@@ -40,67 +41,13 @@
 
 
 			<div class="novosti"> 
-				<?php
-
-
-				try{
-									 	
-
-					$veza=new PDO("mysql:host=localhost;dbname=restoran", "korisnik", "korisnik");
-					$veza->exec("set names utf8");
-					$rezultat=$veza->query("select id, autor, naslov, slika, datum, tekst, tekstDet from novosti order by
-						datum desc");
-					
-					if(!$rezultat){
-						$greska=$veza->errorInfo();
-						print"SQL greška: ".$greska[2];
-					}
-
-
-					
-					foreach ($rezultat as $item) {
-						$item['naslov']=strtolower($item['naslov']);
-						$item['naslov']=ucfirst($item['naslov']);
-						print $item['datum']."<br>".$item['autor']."<br><div id='novostiNaslov'>".$item['naslov'].
-						"</div><br><img src='".$item['slika']."'><br>".$item['tekst'];
-						$id=$item['id'];
-						if($item['tekstDet']!=''){
-							print "<a class='novosti2' href='javascript:;' onclick='ucitajStranicu(\"novostiDetBaza.php?id=$id\")'>
-							<br>Detaljnije</a>";
-						}
-						$komentarBr="komentar".$id;
-						print "<br><a class='novosti2' href='javascript:;' onclick='ucitajStranicu(\"sviKomentari.php?id2=$id\")'>Pogledajte sve komentare</a>";
-						$idNovosti=$item['id'];
-						$brKomentara=$veza->query("select * from komentari where novosti='$idNovosti'");
-						$brojKomentara=$brKomentara->rowCount();
-						print " ($brojKomentara)";
-						print "<a class='novosti2' id='napisiKomentar' href='javascript:;' onclick='prikaziFormu(\"$komentarBr\",\"$id\")'>Napisite komentar</a>";
-						print "<div id='komentar".$id."'></div>";
-						print "<br><br><br><br>";
-					}
-					
-					} catch (Exception $e) {
-					 	echo $e->getMessage();
-					 } 
-
-				?>
+				<div id="glavneNovosti"></div>
 
 				 
 			</div> 
 	
 
-			<script>
-
-				
-				function prikaziFormu(index,idKomentara){
-					
-				    <?php $id='"+idKomentara+"'; ?>
-
-				    document.getElementById(index).innerHTML="<form name='formaKomentar' method='get' action='slanjeKomentara.php'><input type='hidden' name='ids' value='<?php echo $id; ?>'><input type='text' name='ime' placeholder='ime'><br> <input type='email' name='email' placeholder='email'><br> <textarea name='komentar' rows='10' cols='15' placeholder='komentar...' required></textarea><br> <input type='submit' name='submit' value='submit'></form>";
-				  				 
-
-				}
-			</script>
+			
 
 
 	 	
@@ -112,6 +59,36 @@
 			</div>
 			
 		</div>
-		<script src="UcitavanjeStranica.js"></script>		
+		<script >
+
+
+			function prikaziGlavneNovosti(){
+				var x=new XMLHttpRequest(); 
+				x.onreadystatechange=function(){
+					if(x.readyState==4 && x.status==200){
+						document.getElementById('glavneNovosti').innerHTML=x.responseText;
+					}
+				}
+
+					
+				x.open("GET", "phpSkripte\\ucitavanjeNovostiWS.php", true);
+				x.send(); 
+
+				
+			}
+
+			//automatsko azuriranje novosti
+			setInterval(prikaziGlavneNovosti,3000);
+
+			function prikaziFormu(index,idKomentara){
+					
+				    <?php $id='"+idKomentara+"'; ?>
+
+				    document.getElementById(index).innerHTML="<form name='formaKomentar' method='get' action='slanjeKomentara.php'><input type='hidden' name='ids' value='<?php echo $id; ?>'><input type='text' name='ime' placeholder='ime'><br> <input type='email' name='email' placeholder='email'><br> <textarea name='komentar' rows='10' cols='15' placeholder='komentar...' required></textarea><br> <input type='submit' name='submit' value='submit'></form>";
+				  				 
+
+				}
+		</script>
+		<script src="js\UcitavanjeStranica.js"></script>		
 	</body>
 </html>

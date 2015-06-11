@@ -3,7 +3,7 @@
 			
 			body{
 				
-				background-image: url('pozadina.jpg');
+				background-image: url('..\\pozadina.jpg');
 				background-size: auto;
                 
 			}
@@ -37,7 +37,7 @@
 			#palace{
 				height: 70px;
 				width: 74px;
-				background-image: url('palace.gif');
+				background-image: url('..\\palace.gif');
 				background-size: contain;
 				background-repeat: no-repeat;
 				position: relative;
@@ -93,7 +93,7 @@
 				position: relative;
 				bottom: 260px;
 				left:871px;
-				background-image: url('login2.png');
+				background-image: url('..\\login2.png');
 				background-size: contain;
 				background-repeat: no-repeat;
 			}
@@ -140,7 +140,7 @@
 			}
 
 			#partneri ul{
-				list-style-image: url('arrow.png');
+				list-style-image: url('..\\arrow.png');
 
 			}
 
@@ -211,7 +211,7 @@
 				height: 30px;
 				width: 30px;
 				position: relative;
-				background-image: url('fb.png');
+				background-image: url('..\\fb.png');
 				background-size: contain;
 				background-repeat: no-repeat;
 			}
@@ -324,7 +324,7 @@
 			#uzv1{
 				height: 20px;
 				width:20px;
-				background-image: url('uzvicnik.gif');
+				background-image: url('..\\uzvicnik.gif');
 				background-size: contain;
 				background-repeat: no-repeat;
 				position: relative;
@@ -337,7 +337,7 @@
 			#uzv2{
 				height: 20px;
 				width:20px;
-				background-image: url('uzvicnik.gif');
+				background-image: url('..\\uzvicnik.gif');
 				background-size: contain;
 				background-repeat: no-repeat;
 				position: relative;
@@ -350,7 +350,7 @@
 			#uzv3{
 				height: 20px;
 				width:20px;
-				background-image: url('uzvicnik.gif');
+				background-image: url('..\\uzvicnik.gif');
 				background-size: contain;
 				background-repeat: no-repeat;
 				position: relative;
@@ -473,42 +473,73 @@
 
 			#loginInf1{
 				position: absolute;
-				bottom: 850px;
-				left: 712px;
+				bottom: 868px;
+				left: 662px;
 				color: teal;
 				font-size: 17px;
+				width: 230px;
+				text-align: right;
+
 			}
 
 			#loginInf2{
 				position: relative;
-				bottom: 1102px;
-				left: 712px;
+				bottom: 1120px;
+				left: 662px;
 				color: teal;
 				font-size: 17px;
+				width: 230px;
+				text-align: right;
 			}
 
 			#loginInf3{
 				position: relative;
-				bottom: 265px;
-				left: 712px;
+				bottom: 283px;
+				left: 662px;
 				color: teal;
 				font-size: 17px;
+				width: 230px;
+				text-align: right;
 			}
 
 			#loginInf5{
 				position: absolute;
-				bottom: 1525px;
-				left: 712px;
+				bottom: 1543px;
+				left: 662px;
 				color: teal;
 				font-size: 17px;
+				width: 230px;
+				text-align: right;
+			}
+
+			#loginInfNovosti{
+				position: relative;
+				bottom: 283px;
+				left: 662px;
+				color: teal;
+				font-size: 17px;
+				width: 230px;
+				text-align: right;
 			}
 
 			#loginInfKom{
 				position: relative;
-				bottom: 265px;
-				left: 712px;
+				bottom: 283px;
+				left: 662px;
 				color: teal;
 				font-size: 17px;
+				width: 230px;
+				text-align: right;
+			}
+
+			#loginInfDetNov{
+				position: relative;
+				bottom: 283px;
+				left: 662px;
+				color: teal;
+				font-size: 17px;
+				width: 230px;
+				text-align: right;
 			}
 
 			#brisanjeKomentara1{
@@ -532,3 +563,46 @@
 				position: relative;
 				bottom: 50px;
 			}
+
+			#odjava1{
+				position: absolute;
+				bottom: 840px;
+				left: 814px;
+			}
+
+			#odjava2{
+				position: absolute;
+				bottom: 1160px;
+				left: 814px;
+			}
+
+			#odjava3{
+				position: absolute;
+				bottom: 2478px;
+				left: 814px;
+			}
+
+			#odjava5{
+				position: absolute;
+				bottom: 1515px;
+				left: 814px;
+			}
+
+			#odjavaNovosti{
+				position: absolute;
+				bottom: 1013px;
+				left: 814px;
+			}
+
+			#odjavaSviKomentari{
+				position: absolute;
+				bottom: 1470px;
+				left: 814px;
+			}
+
+			#odjavaDetNov{
+				position: absolute;
+				bottom: 735px;
+				left: 814px;
+			}
+

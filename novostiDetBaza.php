@@ -4,10 +4,10 @@
 		<link rel="shortcut icon" href="icon.ico"/>
 		<title>Restoran Palace</title>
 		<meta charset="UTF-8">
-		<link rel="stylesheet" type="text/css" href="wp.css"> 
+		<link rel="stylesheet" type="text/css" href="css\wp.css"> 
 	</head>
 	
-	<body>
+	<body onload="prikaziNovost()">
 		<div id="frame">
 			<div id="header">
 				<a href="javascript:;" onclick="ucitajStranicu('index.php')"><div id="palace"></div></a>
@@ -27,48 +27,41 @@
 
 			<a href="https://www.facebook.com/pages/Palace/355407241330586"><div id="fb"></div></a>
 			
-			
+			<?php
+			session_start();
+			if(isset($_SESSION['login_user'])){
+					echo "<div id='loginInfDetNov'>".$_SESSION['login_user']." je prijavljen!</div>";
+					echo '<a href="phpSkripte\odjava.php" id="odjavaDetNov">Odjavite se!</a>';
+				}
+			?>
 
 
 
 			<div class="novosti">
-			<?php
-
-				$index=$_GET['id'];
-				
-				try{
-									 	
-
-					$veza=new PDO("mysql:host=localhost;dbname=restoran", "korisnik", "korisnik");
-					$veza->exec("set names utf8");
-					$rezultat=$veza->query("select id, autor, naslov, slika, datum, tekst, tekstDet from novosti where id=$index
-					 order by datum desc");
-					
-										
-					foreach ($rezultat as $item) {
-						$item['naslov']=strtolower($item['naslov']);
-						$item['naslov']=ucfirst($item['naslov']);
-						
-							print $item['datum']."<br>".$item['autor']."<br><div id='novostiNaslov'>".$item['naslov'].
-							"</div><br><img src='".$item['slika']."'><br>".$item['tekstDet'];
-							
-						
-					}
-					
-				}
-				catch (Exception $e) {
-				 	echo $e->getMessage();
-				} 
-
-
-
-			?>
-
+				<div id='novostDet'></div>
 			</div>
+			
 
+			<script>
+				
 
+				function prikaziNovost(){
+					
+				var x=new XMLHttpRequest();
+				x.onreadystatechange=function(){
+					if(x.readyState==4 && x.status==200){
+						document.getElementById('novostDet').innerHTML=x.responseText;
+					}
+				}
+				
+				var parametar=<?php echo $_GET['id'];?>;
+				x.open("GET", "phpSkripte\\novostiDetaljnoWS.php?id="+parametar, true);
+				x.send();
+                         				
+				}
 
-
+				
+			</script>
 
 
 
@@ -82,7 +75,7 @@
 			
 		</div>	
 
-		<script src="UcitavanjeStranica.js"></script>		
+		<script src="js\UcitavanjeStranica.js"></script>		
 	</body>
 </html>
 

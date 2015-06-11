@@ -4,10 +4,10 @@
 		<link rel="shortcut icon" href="icon.ico"/>
 		<title>Restoran Palace</title>
 		<meta charset="UTF-8">
-		<link rel="stylesheet" type="text/css" href="wp.css"> 
+		<link rel="stylesheet" type="text/css" href="css\wp.css"> 
 	</head>
 	
-	<body>
+	<body onload="posaljiKomentar()">
 		<div id="frame">
 			<div id="header">
 				<a href="index.php"><div id="palace"></div></a>
@@ -15,49 +15,52 @@
 			</div>
 			
 						
-			
+			<div id="komentarNaslov"></div>
 						
-			<?php
-
-				function test_input($data){
-					$data=stripcslashes($data);
-					$data=htmlspecialchars($data);
-					return $data;
-				}
-
-
-				$ime=test_input($_GET['ime']);
-				$email=test_input($_GET['email']);
-				$komentar=test_input($_GET['komentar']);
-				$id=test_input($_GET['ids']);
-
-
-				try{				
-					$veza=new PDO("mysql:host=localhost;dbname=restoran", "korisnik", "korisnik");
-					$veza->exec("set names utf8");
-					$sql="INSERT INTO komentari(novosti, autor, email, tekst)
-					VALUES('$id', '$ime', '$email', '$komentar')";
-					$veza->exec($sql); 
-					echo "<div id='komentarNaslov'>Hvala Vam na ostavljenom komentaru!</div>";          
-				}
-				catch (Exception $e) {
-				 	echo $e->getMessage();
-				}      
-
-			?>
-
-			<a id="vratiNazad" href="novostiBaza.php">Vrati se nazad!</a>
 			
+
+			
+
+			<script>
+			
+			
+				function posaljiKomentar(){
+				
+					var x=new XMLHttpRequest();
+					x.onreadystatechange=function(){
+						if(x.readyState==4 && x.status==200){
+							document.getElementById('komentarNaslov').innerHTML=x.responseText;
+						}
+					}
+					
+					var parametar1=<?php echo json_encode($_GET['ime']);?>; 
+					var parametar2=<?php echo json_encode($_GET['email']);?>;
+					var parametar3=<?php echo json_encode($_GET['komentar']);?>;
+					var parametar4=<?php echo json_encode($_GET['ids']);?>; 
+
+					
+					x.open("GET", "phpSkripte\\slanjeKomentaraWS.php?ime="+parametar1+"&email="+parametar2+"&komentar="+parametar3+"&ids="+parametar4, true);
+					x.send();  
+				} 
+			</script>
+				
+				
+			<a id="vratiNazad" href="novostiBaza.php">Vrati se nazad!</a>
+
+			
+			
+
 			<div id="footer">
 				<p>Copyright © 2015 Restoran Palace Sarajevo<br>
 				Sva prava zadržana</p>
 			</div>
 			
+
+
 		</div>	
 
-		<script src="UcitavanjeStranica.js"></script>		
+		<script src="js\UcitavanjeStranica.js"></script>		
 	</body>
 </html>
-
 
 

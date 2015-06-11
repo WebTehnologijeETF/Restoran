@@ -4,10 +4,10 @@
 		<link rel="shortcut icon" href="icon.ico"/>
 		<title>Restoran Palace</title>
 		<meta charset="UTF-8">
-		<link rel="stylesheet" type="text/css" href="wp.css"> 
+		<link rel="stylesheet" type="text/css" href="css\wp.css"> 
 	</head>
 	
-	<body>
+	<body onload="prikaziNovostiKomentare()">
 		<div id="frame">
 			<div id="header">
 				<a href="javascript:;" onclick="ucitajStranicu('index.php')"><div id="palace"></div></a>
@@ -31,64 +31,49 @@
 			<?php
 			session_start();
 			if(isset($_SESSION['login_user'])){
-					echo "<div id='loginInfKom'>Administrator je prijavljen!</div>";
+					echo "<div id='loginInfKom'>".$_SESSION['login_user']." je prijavljen!</div>";
+					echo '<a href="phpSkripte\odjava.php" id="odjavaSviKomentari">Odjavite se!</a>';
 				}
 			?>
 
 			<div class="novosti"> 
-			<?php
-					
-				$id=$_GET['id2'];				
-								
-				try{				
-					$veza=new PDO("mysql:host=localhost;dbname=restoran", "korisnik", "korisnik");
-					$veza->exec("set names utf8");
+			<div id="novostiDet2"></div>
+			<div id="sviKomentari"></div>
+			
+			</div>
 
-					$rezultat=$veza->query("select id, autor, naslov, slika, datum, tekst from novosti where id=$id order by
-						datum desc"); 
-					
-					
-
-					foreach ($rezultat as $item) {
-						$item['naslov']=strtolower($item['naslov']);
-						$item['naslov']=ucfirst($item['naslov']);
-						
-							print $item['datum']."<br>".$item['autor']."<br><div id='novostiNaslov'>".$item['naslov'].
-							"</div><br><img src='".$item['slika']."'><br>".$item['tekst'];
-							
-					}
-
-					//$rez= $veza->query("select count(*) from komentari where novosti=$id order by datum");
-
+			<script>
 				
 
-					$rezultat= $veza->query("select id, datum, autor, email, tekst
-						from komentari where novosti=$id order by datum"); 
-
-					if($rezultat->rowCount()==0) print "<br><br><div id='komentarObavijest'>Nema komentara na ovu vijest!</div>";
-										
-					foreach ($rezultat as $item) {
-						print "<br><br><br>";
-						print $item['datum'].'<br>';
-						if($item['email']!=''){ 
-							print '<a href="mailto:'.$item['email'].'">'.$item['autor'].'</a><br>';
-							print $item['email'].'<br>';
-						}
-						else if($item['autor']!='') print $item['autor'].'<br>';
-						
-						print 'id:'.$item['id'].'<br>'.$item['tekst'];
-						}
-
-					
-							          
-
+				function prikaziNovostiKomentare(){
+				//ucitavanje novosti
+				var x=new XMLHttpRequest();
+				x.onreadystatechange=function(){
+					if(x.readyState==4 && x.status==200){
+						document.getElementById('novostiDet2').innerHTML=x.responseText;
+					}
 				}
-				catch (Exception $e) {
-				 	echo $e->getMessage();
-				}      
+				
+				var parametar=<?php echo json_encode($_GET['id']);?>;
+				x.open("GET", "phpSkripte\\novostiDetaljnoWS.php?id="+parametar, true);
+				x.send();
+                         
 
-			?>
-			</div>
+				//ucitavanje komentara
+				var x2=new XMLHttpRequest();
+				x2.onreadystatechange=function(){
+					if(x2.readyState==4 && x2.status==200){
+						document.getElementById('sviKomentari').innerHTML=x2.responseText;
+					}
+				}
+				
+				var parametar=<?php echo json_encode($_GET['id']);?>;
+				x2.open("GET", "phpSkripte\\sviKomentariWS.php?id="+parametar, true);
+				x2.send();
+				}
+
+				
+			</script>
 			
 			
 			<div id="footer">
@@ -98,7 +83,7 @@
 			
 		</div>	
 
-		<script src="UcitavanjeStranica.js"></script>		
+		<script src="js\UcitavanjeStranica.js"></script>		
 	</body>
 </html>
 

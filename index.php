@@ -21,7 +21,8 @@
 				<ul>
 				    <li><a href="javascript:;" onclick="ucitajStranicu('stranica2.php')">O NAMA</a></li>
 					<li><a href="javascript:;" onclick="ucitajStranicu('novostiBaza.php')">NOVOSTI</a></li>
-					<li><a href="javascript:;" onclick="ucitajStranicu('stranica3.php')">MENI</a></li>					 
+					<li><a href="javascript:;" onclick="ucitajStranicu('stranica3.php')">MENI</a></li>	
+					<li><a href="javascript:;" onclick="ucitajStranicu('galerija.php')">GALERIJA</a></li>				 
 					<li><a href="javascript:;" onclick="ucitajStranicu('stranica5.php')">KONTAKT</a></li>
 				</ul>
 			</div>
@@ -53,6 +54,7 @@
 			?>
 
 			<a href="javascript:;" onclick="ucitajStranicu('registracija.php')" id="registracija1">Registruj se</a>
+			
 			
 			
 			<div id="footer">

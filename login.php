@@ -66,7 +66,8 @@
 				<ul>
 				    <li><a href="javascript:;" onclick="ucitajStranicu('stranica2.html')">O NAMA</a></li>
 					<li><a href="javascript:;" onclick="ucitajStranicu('novostiBaza.php')">NOVOSTI</a></li>
-					<li><a href="javascript:;" onclick="ucitajStranicu('stranica3.html')">MENI</a></li>					 
+					<li><a href="javascript:;" onclick="ucitajStranicu('stranica3.html')">MENI</a></li>
+					<li><a href="javascript:;" onclick="ucitajStranicu('galerija.php')">GALERIJA</a></li>					 
 					<li><a href="javascript:;" onclick="ucitajStranicu('stranica5.php')">KONTAKT</a></li>
 				</ul>
 			</div>
@@ -94,7 +95,7 @@
 			
 		</div>
 
-			
+							
 
 		<script src="js\UcitavanjeStranica.js"></script>		
 	</body>

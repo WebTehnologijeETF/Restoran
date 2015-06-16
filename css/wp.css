@@ -58,9 +58,9 @@
 				
 				position: relative;
 				top: -140px;
-				width: 440px;	
+				width: 510px;	
 				position: relative;
-				left: 464px;
+				left: 414px;
 				
 				
 			}
@@ -72,7 +72,7 @@
 			
 			#nav li{
 				display: inline;				
-				margin-left:30px;
+				margin-right:30px;
 				
 			}
 			
@@ -102,7 +102,6 @@
 			#footer{
 				color: gray;
 				text-align: center;
-
 			}
 
 			
@@ -613,4 +612,20 @@
 				font-size: 17px;
 				text-decoration: none;
 				color: gray;
+			}
+
+			div.img {
+				margin-left: 12px;
+				margin-bottom: 15px;
+			    padding: 5px;
+			    border: 2px solid gainsboro;
+			    height: auto;
+			    width: auto;
+			    float: left;
+			    text-align: center;
+			}
+
+			#img2{
+				margin-top: -100px;
+				
 			}
